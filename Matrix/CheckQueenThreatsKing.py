@@ -5,7 +5,7 @@ Given the Coordinates of King and Queen on a chessboard, check if queen threaten
 
 def check_threat(king_x, king_y, queen_x, queen_y):
     # If coordinates are non-integer or outside the bounds of the chessboard
-    if not (validate(king_x) and validate(king_y) and validate(queen_x) and validate(queen_y)):
+    if not (validate(king_x) and validate(king_y) and validate(queen_x) and validate(queen_y) and noCollision(king_x, king_y, queen_x, queen_y)):
         return False
     
     # if king is in the vertical column of queen, king_x = queen_x
@@ -16,6 +16,11 @@ def check_threat(king_x, king_y, queen_x, queen_y):
 
     return False
 
+def noCollision(xk, yk, xq, yq):
+    if xk == xq and yk == yq:
+        return False
+    
+    return True
 
 def validate(coordinate):
     if type(coordinate) is int and 1 <= coordinate <= 8:
